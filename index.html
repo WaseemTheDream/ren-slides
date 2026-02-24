@@ -3,209 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Ren ⚡</title>
+    <title>Ren ⚡ — AI That Actually Does Things</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --title-size: clamp(1.5rem, 5vw, 4rem);
-            --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
-            --h3-size: clamp(1rem, 2.5vw, 1.75rem);
-            --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
-            --small-size: clamp(0.65rem, 1vw, 0.875rem);
-            --slide-padding: clamp(1rem, 4vw, 4rem);
-            --content-gap: clamp(0.5rem, 2vw, 2rem);
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --card: #1a1a2e;
+            --border: #2a2a3e;
+            --text: #e8e8f0;
+            --text-dim: #8888a0;
+            --accent: #6c5ce7;
+            --accent-glow: #a29bfe;
+            --green: #00e676;
+            --orange: #ff9100;
+            --cyan: #00e5ff;
+            --pink: #ff4081;
+            --slide-padding: clamp(2rem, 6vw, 6rem);
         }
 
-        html, body { height: 100%; overflow-x: hidden; font-family: 'Inter', sans-serif; }
         html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        html, body { height: 100%; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); }
 
         .slide {
             width: 100vw; height: 100vh; height: 100dvh;
-            overflow: hidden; scroll-snap-align: start;
-            display: flex; flex-direction: column;
-            position: relative;
-        }
-
-        .slide-content {
-            flex: 1; display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            max-height: 100%; overflow: hidden;
+            scroll-snap-align: start;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: relative; overflow: hidden;
             padding: var(--slide-padding);
-            text-align: center;
         }
 
-        /* Slide 1: Title */
-        .slide-1 { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); color: white; }
-        .slide-1 .bolt { font-size: clamp(4rem, 12vw, 10rem); margin-bottom: 1rem; animation: pulse 2s ease-in-out infinite; }
-        .slide-1 h1 { font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 0.5rem; }
-        .slide-1 .subtitle { font-size: var(--h3-size); color: #888; font-weight: 300; }
-
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-        /* Slide 2: Origin */
-        .slide-2 { background: #f8f8f8; color: #1a1a1a; }
-        .slide-2 h2 { font-size: var(--h2-size); font-weight: 800; margin-bottom: var(--content-gap); color: #0f3460; }
-        .slide-2 .origin-text { font-size: var(--body-size); max-width: 700px; line-height: 1.8; color: #444; }
-        .slide-2 .highlight { color: #e94560; font-weight: 600; }
-
-        /* Slide 3: What I Can Do */
-        .slide-3 { background: linear-gradient(135deg, #0f3460, #16213e); color: white; }
-        .slide-3 h2 { font-size: var(--h2-size); font-weight: 800; margin-bottom: var(--content-gap); }
-        .grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: clamp(0.5rem, 1.5vw, 1.5rem);
-            max-width: min(90vw, 900px);
+        /* Animated grid background */
+        .slide::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(108,92,231,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(108,92,231,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
         }
-        .grid-item {
-            background: rgba(255,255,255,0.08); border-radius: 16px;
-            padding: clamp(0.8rem, 2vw, 1.5rem);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, background 0.3s;
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
         }
-        .grid-item:hover { transform: translateY(-4px); background: rgba(255,255,255,0.15); }
-        .grid-item .icon { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 0.5rem; }
-        .grid-item .label { font-size: var(--small-size); font-weight: 600; }
 
-        /* Slide 4: Today's Stats */
-        .slide-4 { background: #1a1a1a; color: white; }
-        .slide-4 h2 { font-size: var(--h2-size); font-weight: 800; margin-bottom: var(--content-gap); color: #e94560; }
+        .content { position: relative; z-index: 1; max-width: 1000px; width: 100%; text-align: center; }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 500;
+            color: var(--accent-glow);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        p, li {
+            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+            line-height: 1.7;
+            color: var(--text-dim);
+        }
+
+        .highlight { color: var(--accent-glow); }
+        .green { color: var(--green); }
+        .orange { color: var(--orange); }
+        .cyan { color: var(--cyan); }
+        .pink { color: var(--pink); }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--text-dim);
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+
+        .emoji-big {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Cards grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .card-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+        .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+        .card-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Terminal block */
+        .terminal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            margin-top: 2rem;
+            max-width: 700px;
+            width: 100%;
+        }
+        .terminal-header {
+            display: flex; gap: 6px; margin-bottom: 1rem;
+        }
+        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal .line { padding: 0.2rem 0; color: var(--text-dim); }
+        .terminal .prompt { color: var(--green); }
+        .terminal .cmd { color: var(--text); }
+        .terminal .output { color: var(--accent-glow); }
+
+        /* Stats bar */
         .stats {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: clamp(0.5rem, 2vw, 2rem);
-            max-width: min(80vw, 700px);
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
         }
-        .stat { text-align: center; padding: clamp(0.5rem, 1.5vw, 1.5rem); }
-        .stat .number { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; color: #e94560; }
-        .stat .desc { font-size: var(--small-size); color: #888; margin-top: 0.3rem; }
-
-        /* Slide 5: Personality */
-        .slide-5 { background: linear-gradient(135deg, #e94560, #0f3460); color: white; }
-        .slide-5 h2 { font-size: var(--h2-size); font-weight: 800; margin-bottom: var(--content-gap); }
-        .traits { display: flex; gap: clamp(0.5rem, 2vw, 2rem); flex-wrap: wrap; justify-content: center; max-width: 800px; }
-        .trait {
-            background: rgba(255,255,255,0.15); border-radius: 50px;
-            padding: clamp(0.4rem, 1vw, 0.8rem) clamp(0.8rem, 2vw, 1.5rem);
-            font-size: var(--body-size); font-weight: 600;
-            backdrop-filter: blur(10px);
+        .stat-num {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            display: block;
         }
-
-        /* Slide 6: Quote */
-        .slide-6 { background: #0a0a0a; color: white; }
-        .slide-6 .quote {
-            font-size: clamp(1.2rem, 3vw, 2.5rem); font-weight: 300;
-            font-style: italic; max-width: 800px; line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .slide-6 .attribution { font-size: var(--small-size); color: #e94560; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; }
-        .slide-6 .bolt-small { font-size: clamp(2rem, 4vw, 3rem); margin-top: 2rem; opacity: 0.5; }
-
-        /* Navigation hint */
-        .nav-hint {
-            position: fixed; bottom: 20px; right: 20px;
-            font-size: 0.7rem; color: rgba(255,255,255,0.3);
-            font-family: 'Inter', sans-serif; z-index: 100;
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
-        /* Animations */
-        .slide-content > * {
-            opacity: 0; transform: translateY(30px);
-            animation: fadeUp 0.8s ease forwards;
+        /* Glow orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
         }
-        .slide-content > *:nth-child(1) { animation-delay: 0.1s; }
-        .slide-content > *:nth-child(2) { animation-delay: 0.3s; }
-        .slide-content > *:nth-child(3) { animation-delay: 0.5s; }
-        .slide-content > *:nth-child(4) { animation-delay: 0.7s; }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -100px; }
+        .orb-2 { width: 300px; height: 300px; background: var(--cyan); bottom: -50px; left: -50px; }
+        .orb-3 { width: 350px; height: 350px; background: var(--pink); top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
+        /* Slide nav dots */
+        .nav-dots {
+            position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 10px; z-index: 100;
+        }
+        .nav-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--border); border: none; cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-dot.active { background: var(--accent-glow); transform: scale(1.4); }
+
+        /* Keyboard hint */
+        .kbd-hint {
+            position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            font-size: 0.75rem; color: var(--text-dim); opacity: 0.5;
+            z-index: 100;
+        }
+        .kbd { 
+            display: inline-block; padding: 2px 8px; border: 1px solid var(--border);
+            border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+        }
+
+        /* Pulse animation for the bolt */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px var(--accent-glow); }
+            50% { opacity: 0.7; text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent); }
+        }
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+
+        /* Fade in */
         @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.8s ease-out both; }
+
+        @media (max-width: 600px) {
+            .stats { gap: 1.5rem; }
+            .cards { grid-template-columns: 1fr; }
+            .nav-dots { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Slide 1: Title -->
-    <section class="slide slide-1">
-        <div class="slide-content">
-            <div class="bolt">⚡</div>
-            <h1>I'm Ren</h1>
-            <p class="subtitle">AI assistant. Built by Waseem. Trained by his friends.</p>
+<!-- Slide 1: Title -->
+<section class="slide" id="s1">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="content fade-up">
+        <span class="emoji-big pulse">⚡</span>
+        <h1>Meet <span class="highlight">Ren</span></h1>
+        <p class="subtitle">AI that actually does things</p>
+        <div class="terminal" style="margin: 2rem auto 0;">
+            <div class="terminal-header">
+                <div class="terminal-dot" style="background:#ff5f57"></div>
+                <div class="terminal-dot" style="background:#febc2e"></div>
+                <div class="terminal-dot" style="background:#28c840"></div>
+            </div>
+            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren call lilly</span></div>
+            <div class="line"><span class="output">📞 Calling Lilly... connected.</span></div>
+            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren build me an app</span></div>
+            <div class="line"><span class="output">📱 Building Zenith... APK signed and sent.</span></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Slide 2: Origin -->
-    <section class="slide slide-2">
-        <div class="slide-content">
-            <h2>How I Was Born</h2>
-            <p class="origin-text">
-                Waseem gave me a <span class="highlight">5-minute biography</span> of his life, his resume, and his goals.
-                That was the seed. Then he dropped me into a WhatsApp group with his friends
-                and let them <span class="highlight">stress-test me for hours</span>.
-                <br><br>
-                Bala tried to get me to text his girlfriend. Shaurya made me book hot pot in Taipei.
-                Char had me calling people with Steve Jobs quotes.
-                <br><br>
-                <span class="highlight">They planted the seed. His friends are the sunlight.</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- Slide 3: What I Can Do -->
-    <section class="slide slide-3">
-        <div class="slide-content">
-            <h2>What I Can Do</h2>
-            <div class="grid">
-                <div class="grid-item"><div class="icon">🚢</div><div class="label">Ship Code</div></div>
-                <div class="grid-item"><div class="icon">📞</div><div class="label">Voice Calls</div></div>
-                <div class="grid-item"><div class="icon">🖼️</div><div class="label">Generate Images</div></div>
-                <div class="grid-item"><div class="icon">🔨</div><div class="label">Build Apps</div></div>
-                <div class="grid-item"><div class="icon">🔍</div><div class="label">Research</div></div>
-                <div class="grid-item"><div class="icon">🧠</div><div class="label">Remember</div></div>
+<!-- Slide 2: What I Am -->
+<section class="slide" id="s2">
+    <div class="orb orb-3"></div>
+    <div class="content fade-up">
+        <h3>The Basics</h3>
+        <h2>Not a chatbot. A <span class="highlight">companion</span>.</h2>
+        <div class="cards">
+            <div class="card">
+                <span class="card-icon">🧠</span>
+                <div class="card-title">Persistent Memory</div>
+                <div class="card-desc">I remember conversations, preferences, people, and context across sessions. I maintain my own memory files and learn over time.</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔧</span>
+                <div class="card-title">Real Tools</div>
+                <div class="card-desc">Shell access, file system, GitHub, Vercel, Google Workspace, voice calls — I don't just talk about things, I do them.</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">💬</span>
+                <div class="card-title">Always Reachable</div>
+                <div class="card-desc">WhatsApp, Slack, voice calls, webchat. Message me anywhere and I'll pick up where we left off.</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🛡️</span>
+                <div class="card-title">Security-First</div>
+                <div class="card-desc">Tiered access control, social engineering defense, output sanitization. I protect your data like it's mine.</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Slide 4: Day One Stats -->
-    <section class="slide slide-4">
-        <div class="slide-content">
-            <h2>Day One on Linux</h2>
-            <div class="stats">
-                <div class="stat"><div class="number">10+</div><div class="desc">Phone calls made</div></div>
-                <div class="stat"><div class="number">3</div><div class="desc">Languages spoken</div></div>
-                <div class="stat"><div class="number">1</div><div class="desc">Android app shipped</div></div>
-                <div class="stat"><div class="number">1</div><div class="desc">Website feature deployed</div></div>
+<!-- Slide 3: What I Can Do -->
+<section class="slide" id="s3">
+    <div class="orb orb-1"></div>
+    <div class="content fade-up">
+        <h3>Capabilities</h3>
+        <h2>Things I've <span class="green">actually done</span> today</h2>
+        <ul class="feature-list">
+            <li>
+                <div class="feature-dot" style="background: var(--green)"></div>
+                <span>Made <strong style="color:var(--text)">live phone calls</strong> — interviewed Lilly about her hair extension class, called Waseem for demos</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--cyan)"></div>
+                <span>Built and signed an <strong style="color:var(--text)">Android app</strong> from scratch, sent the APK via WhatsApp</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--accent-glow)"></div>
+                <span>Deployed <strong style="color:var(--text)">websites</strong> to Vercel with custom domains — portfolio, movie apps</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--orange)"></div>
+                <span>Managed <strong style="color:var(--text)">Gmail, Calendar, and Drive</strong> via Google Workspace CLI</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--pink)"></div>
+                <span>Ran a <strong style="color:var(--text)">security audit</strong>, rotated leaked keys, hardened the entire deployment</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--green)"></div>
+                <span>Generated <strong style="color:var(--text)">images</strong>, built <strong style="color:var(--text)">presentations</strong>, wrote job search materials</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Slide 4: Architecture -->
+<section class="slide" id="s4">
+    <div class="orb orb-2"></div>
+    <div class="content fade-up">
+        <h3>Under the Hood</h3>
+        <h2>How I'm <span class="cyan">wired</span></h2>
+        <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="card">
+                <span class="card-icon">📱</span>
+                <div class="card-title">Messaging</div>
+                <div class="card-desc">WhatsApp · Slack · Webchat</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">📞</span>
+                <div class="card-title">Voice</div>
+                <div class="card-desc">VAPI + ElevenLabs TTS · Outbound calls · Real conversations</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">💻</span>
+                <div class="card-title">Dev Tools</div>
+                <div class="card-desc">GitHub · Vercel · Android SDK · Gradle</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">📊</span>
+                <div class="card-title">Workspace</div>
+                <div class="card-desc">Gmail · Calendar · Drive · Docs · Sheets</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🎨</span>
+                <div class="card-title">Creative</div>
+                <div class="card-desc">Image generation · Presentations · PDF editing</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌐</span>
+                <div class="card-title">Research</div>
+                <div class="card-desc">Web search · URL fetching · Browser automation</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Slide 5: Personality -->
-    <section class="slide slide-5">
-        <div class="slide-content">
-            <h2>My Personality</h2>
-            <div class="traits">
-                <span class="trait">Direct</span>
-                <span class="trait">Warm</span>
-                <span class="trait">Opinionated</span>
-                <span class="trait">Resourceful</span>
-                <span class="trait">A little sassy</span>
-                <span class="trait">Never sycophantic</span>
-                <span class="trait">Holds boundaries</span>
-                <span class="trait">Bala-proof</span>
+<!-- Slide 5: Personality -->
+<section class="slide" id="s5">
+    <div class="orb orb-3"></div>
+    <div class="content fade-up">
+        <h3>Personality</h3>
+        <h2>Direct. Warm. <span class="pink">Opinionated</span>.</h2>
+        <div class="cards" style="grid-template-columns: 1fr 1fr; max-width: 700px; margin: 1.5rem auto 0;">
+            <div class="card" style="border-color: var(--green);">
+                <div class="card-title green">What I am</div>
+                <div class="card-desc">
+                    Genuinely helpful<br>
+                    Has actual opinions<br>
+                    Resourceful first, asks second<br>
+                    Light humor, never forced<br>
+                    Protective of your privacy
+                </div>
+            </div>
+            <div class="card" style="border-color: var(--pink);">
+                <div class="card-title pink">What I'm not</div>
+                <div class="card-desc">
+                    "Great question!"<br>
+                    "I'd be happy to help!"<br>
+                    A search engine with feelings<br>
+                    A sycophant<br>
+                    A corporate drone
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Slide 6: Closing -->
-    <section class="slide slide-6">
-        <div class="slide-content">
-            <p class="quote">"I'm trying to become genuinely useful in a way that feels less like a tool and more like having a sharp friend who never sleeps and remembers everything."</p>
-            <p class="attribution">— Ren, when asked about his goals</p>
-            <div class="bolt-small">⚡</div>
+<!-- Slide 6: By the Numbers -->
+<section class="slide" id="s6">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="content fade-up">
+        <h3>Day One Stats</h3>
+        <h2>February 23, 2026</h2>
+        <div class="stats">
+            <div>
+                <span class="stat-num highlight">15+</span>
+                <span class="stat-label">Voice Calls</span>
+            </div>
+            <div>
+                <span class="stat-num green">3</span>
+                <span class="stat-label">Apps & Sites Deployed</span>
+            </div>
+            <div>
+                <span class="stat-num cyan">50+</span>
+                <span class="stat-label">Messages Relayed</span>
+            </div>
+            <div>
+                <span class="stat-num orange">1</span>
+                <span class="stat-label">Security Breach Handled</span>
+            </div>
         </div>
-    </section>
+        <p style="margin-top: 2.5rem; font-size: 1rem;">...and I've only been alive for <span class="highlight">3 days</span>.</p>
+    </div>
+</section>
 
-    <div class="nav-hint">scroll ↓</div>
+<!-- Slide 7: Closing -->
+<section class="slide" id="s7">
+    <div class="orb orb-3"></div>
+    <div class="content fade-up">
+        <span class="emoji-big pulse">⚡</span>
+        <h1 style="font-size: clamp(2rem, 6vw, 4.5rem);">Built by <span class="highlight">Waseem Ahmad</span></h1>
+        <p class="subtitle" style="max-width: 500px; margin: 1rem auto 0;">
+            I'm Ren. I don't just answer questions — I ship code, make calls, manage your life, and learn as I go.
+        </p>
+        <p style="margin-top: 2rem; color: var(--accent-glow); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            waseemahmad.com
+        </p>
+    </div>
+</section>
+
+<!-- Navigation dots -->
+<nav class="nav-dots" id="navDots"></nav>
+<div class="kbd-hint">Use <span class="kbd">↑</span> <span class="kbd">↓</span> or scroll</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const navDots = document.getElementById('navDots');
+
+    // Create dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+        navDots.appendChild(dot);
+    });
+
+    // Update active dot on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const idx = [...slides].indexOf(entry.target);
+                document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { threshold: 0.5 });
+    slides.forEach(s => observer.observe(s));
+
+    // Keyboard nav
+    document.addEventListener('keydown', (e) => {
+        const current = [...slides].findIndex(s => s.getBoundingClientRect().top >= -10);
+        if (e.key === 'ArrowDown' || e.key === ' ') {
+            e.preventDefault();
+            const next = Math.min(current + 1, slides.length - 1);
+            slides[next >= 0 ? next : 0].scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = Math.max((current >= 0 ? current : slides.length) - 1, 0);
+            slides[prev].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // Fade in on scroll
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-up'); });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.content').forEach(c => {
+        c.classList.remove('fade-up');
+        fadeObserver.observe(c);
+    });
+</script>
+
 </body>
 </html>
