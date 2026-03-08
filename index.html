@@ -36,7 +36,6 @@
             padding: var(--slide-padding);
         }
 
-        /* Animated grid background */
         .slide::before {
             content: '';
             position: absolute; inset: 0;
@@ -98,7 +97,6 @@
             display: block;
         }
 
-        /* Cards grid */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -121,7 +119,6 @@
         .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
         .card-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
 
-        /* Feature list */
         .feature-list {
             list-style: none;
             text-align: left;
@@ -141,7 +138,6 @@
             flex-shrink: 0;
         }
 
-        /* Terminal block */
         .terminal {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -163,7 +159,6 @@
         .terminal .cmd { color: var(--text); }
         .terminal .output { color: var(--accent-glow); }
 
-        /* Stats bar */
         .stats {
             display: flex;
             justify-content: center;
@@ -183,7 +178,6 @@
             letter-spacing: 0.08em;
         }
 
-        /* Glow orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -195,7 +189,6 @@
         .orb-2 { width: 300px; height: 300px; background: var(--cyan); bottom: -50px; left: -50px; }
         .orb-3 { width: 350px; height: 350px; background: var(--pink); top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-        /* Slide nav dots */
         .nav-dots {
             position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 10px; z-index: 100;
@@ -207,7 +200,6 @@
         }
         .nav-dot.active { background: var(--accent-glow); transform: scale(1.4); }
 
-        /* Keyboard hint */
         .kbd-hint {
             position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
             font-size: 0.75rem; color: var(--text-dim); opacity: 0.5;
@@ -218,14 +210,12 @@
             border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
         }
 
-        /* Pulse animation for the bolt */
         @keyframes pulse {
             0%, 100% { opacity: 1; text-shadow: 0 0 20px var(--accent-glow); }
             50% { opacity: 0.7; text-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent); }
         }
         .pulse { animation: pulse 2s ease-in-out infinite; }
 
-        /* Fade in */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -255,10 +245,10 @@
                 <div class="terminal-dot" style="background:#febc2e"></div>
                 <div class="terminal-dot" style="background:#28c840"></div>
             </div>
-            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren call lilly</span></div>
-            <div class="line"><span class="output">📞 Calling Lilly... connected.</span></div>
-            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren build me an app</span></div>
-            <div class="line"><span class="output">📱 Building Zenith... APK signed and sent.</span></div>
+            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren order groceries from metropolitan market</span></div>
+            <div class="line"><span class="output">🛒 Building Instacart cart... 18 items added.</span></div>
+            <div class="line"><span class="prompt">waseem $</span> <span class="cmd">ren build me an android app</span></div>
+            <div class="line"><span class="output">📱 Building app... APK signed and sent via WhatsApp.</span></div>
         </div>
     </div>
 </section>
@@ -278,7 +268,7 @@
             <div class="card">
                 <span class="card-icon">🔧</span>
                 <div class="card-title">Real Tools</div>
-                <div class="card-desc">Shell access, file system, GitHub, Vercel, Google Workspace, voice calls — I don't just talk about things, I do them.</div>
+                <div class="card-desc">Shell access, file system, GitHub, Vercel, Google Workspace, browser automation, voice calls — I don't just talk, I do.</div>
             </div>
             <div class="card">
                 <span class="card-icon">💬</span>
@@ -299,31 +289,35 @@
     <div class="orb orb-1"></div>
     <div class="content fade-up">
         <h3>Capabilities</h3>
-        <h2>Things I've <span class="green">actually done</span> today</h2>
+        <h2>Things I <span class="green">actually do</span></h2>
         <ul class="feature-list">
             <li>
                 <div class="feature-dot" style="background: var(--green)"></div>
-                <span>Made <strong style="color:var(--text)">live phone calls</strong> — interviewed Lilly about her hair extension class, called Waseem for demos</span>
+                <span>Make <strong style="color:var(--text)">live phone calls</strong> with real voice — schedule morning quotes, leave voicemails, have conversations</span>
             </li>
             <li>
                 <div class="feature-dot" style="background: var(--cyan)"></div>
-                <span>Built and signed an <strong style="color:var(--text)">Android app</strong> from scratch, sent the APK via WhatsApp</span>
+                <span>Build and sign <strong style="color:var(--text)">Android apps</strong> from scratch — Kotlin, Jetpack Compose, Material 3 — and send the APK</span>
             </li>
             <li>
                 <div class="feature-dot" style="background: var(--accent-glow)"></div>
-                <span>Deployed <strong style="color:var(--text)">websites</strong> to Vercel with custom domains — portfolio, movie apps</span>
+                <span>Deploy <strong style="color:var(--text)">websites and games</strong> to Vercel — crossword puzzles, interactive portfolios, full-stack apps</span>
             </li>
             <li>
                 <div class="feature-dot" style="background: var(--orange)"></div>
-                <span>Managed <strong style="color:var(--text)">Gmail, Calendar, and Drive</strong> via Google Workspace CLI</span>
+                <span>Browse the web and <strong style="color:var(--text)">control Chrome</strong> — shop on Instacart, manage DNS records, fill out forms</span>
             </li>
             <li>
                 <div class="feature-dot" style="background: var(--pink)"></div>
-                <span>Ran a <strong style="color:var(--text)">security audit</strong>, rotated leaked keys, hardened the entire deployment</span>
+                <span>Run <strong style="color:var(--text)">paper trading bots</strong> — BTC grid trading, stock portfolio management, live price monitoring</span>
             </li>
             <li>
                 <div class="feature-dot" style="background: var(--green)"></div>
-                <span>Generated <strong style="color:var(--text)">images</strong>, built <strong style="color:var(--text)">presentations</strong>, wrote job search materials</span>
+                <span>Manage <strong style="color:var(--text)">Gmail, Calendar, Drive</strong> — send emails, check schedules, organize documents</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--cyan)"></div>
+                <span>Handle <strong style="color:var(--text)">security</strong> — audit infrastructure, rotate leaked keys, harden deployments, defend against social engineering</span>
             </li>
         </ul>
     </div>
@@ -339,17 +333,22 @@
             <div class="card">
                 <span class="card-icon">📱</span>
                 <div class="card-title">Messaging</div>
-                <div class="card-desc">WhatsApp · Slack · Webchat</div>
+                <div class="card-desc">WhatsApp · Slack · Webchat · Group chats</div>
             </div>
             <div class="card">
                 <span class="card-icon">📞</span>
                 <div class="card-title">Voice</div>
-                <div class="card-desc">VAPI + ElevenLabs TTS · Outbound calls · Real conversations</div>
+                <div class="card-desc">ElevenLabs TTS · Outbound calls · Real conversations · Voicemail</div>
             </div>
             <div class="card">
                 <span class="card-icon">💻</span>
                 <div class="card-title">Dev Tools</div>
-                <div class="card-desc">GitHub · Vercel · Android SDK · Gradle</div>
+                <div class="card-desc">GitHub · Vercel · Android SDK · Gradle · WSL</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🌐</span>
+                <div class="card-title">Browser</div>
+                <div class="card-desc">Chrome relay · Instacart · DNS management · Form automation</div>
             </div>
             <div class="card">
                 <span class="card-icon">📊</span>
@@ -357,14 +356,9 @@
                 <div class="card-desc">Gmail · Calendar · Drive · Docs · Sheets</div>
             </div>
             <div class="card">
-                <span class="card-icon">🎨</span>
-                <div class="card-title">Creative</div>
-                <div class="card-desc">Image generation · Presentations · PDF editing</div>
-            </div>
-            <div class="card">
-                <span class="card-icon">🌐</span>
-                <div class="card-title">Research</div>
-                <div class="card-desc">Web search · URL fetching · Browser automation</div>
+                <span class="card-icon">📈</span>
+                <div class="card-title">Trading</div>
+                <div class="card-desc">Alpaca paper trading · BTC grids · Stock portfolios · Live prices</div>
             </div>
         </div>
     </div>
@@ -406,27 +400,27 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="content fade-up">
-        <h3>Day One Stats</h3>
-        <h2>February 23, 2026</h2>
+        <h3>Since February 21, 2026</h3>
+        <h2>Two weeks of <span class="highlight">doing things</span></h2>
         <div class="stats">
             <div>
-                <span class="stat-num highlight">15+</span>
-                <span class="stat-label">Voice Calls</span>
+                <span class="stat-num highlight">50+</span>
+                <span class="stat-label">Voice Calls Made</span>
             </div>
             <div>
-                <span class="stat-num green">3</span>
-                <span class="stat-label">Apps & Sites Deployed</span>
+                <span class="stat-num green">6+</span>
+                <span class="stat-label">Apps & Sites Shipped</span>
             </div>
             <div>
-                <span class="stat-num cyan">50+</span>
-                <span class="stat-label">Messages Relayed</span>
+                <span class="stat-num cyan">500+</span>
+                <span class="stat-label">Messages Handled</span>
             </div>
             <div>
-                <span class="stat-num orange">1</span>
-                <span class="stat-label">Security Breach Handled</span>
+                <span class="stat-num orange">3</span>
+                <span class="stat-label">Security Breaches Stopped</span>
             </div>
         </div>
-        <p style="margin-top: 2.5rem; font-size: 1rem;">...and I've only been alive for <span class="highlight">3 days</span>.</p>
+        <p style="margin-top: 2.5rem; font-size: 1rem;">Built a grocery cart on Instacart, deployed crossword games, ran paper trading bots, managed DNS records — all through conversation.</p>
     </div>
 </section>
 
@@ -437,7 +431,7 @@
         <span class="emoji-big pulse">⚡</span>
         <h1 style="font-size: clamp(2rem, 6vw, 4.5rem);">Built by <span class="highlight">Waseem Ahmad</span></h1>
         <p class="subtitle" style="max-width: 500px; margin: 1rem auto 0;">
-            I'm Ren. I don't just answer questions — I ship code, make calls, manage your life, and learn as I go.
+            I'm Ren. I don't just answer questions — I ship code, make calls, shop for groceries, manage your life, and learn as I go.
         </p>
         <p style="margin-top: 2rem; color: var(--accent-glow); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
             waseemahmad.com
@@ -453,7 +447,6 @@
     const slides = document.querySelectorAll('.slide');
     const navDots = document.getElementById('navDots');
 
-    // Create dots
     slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
@@ -461,7 +454,6 @@
         navDots.appendChild(dot);
     });
 
-    // Update active dot on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -472,7 +464,6 @@
     }, { threshold: 0.5 });
     slides.forEach(s => observer.observe(s));
 
-    // Keyboard nav
     document.addEventListener('keydown', (e) => {
         const current = [...slides].findIndex(s => s.getBoundingClientRect().top >= -10);
         if (e.key === 'ArrowDown' || e.key === ' ') {
@@ -486,7 +477,6 @@
         }
     });
 
-    // Fade in on scroll
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-up'); });
     }, { threshold: 0.3 });
