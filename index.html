@@ -29,11 +29,16 @@
         html, body { height: 100%; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); }
 
         .slide {
-            width: 100vw; height: 100vh; height: 100dvh;
+            width: 100vw; min-height: 100vh; min-height: 100dvh;
             scroll-snap-align: start;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             position: relative; overflow: hidden;
             padding: var(--slide-padding);
+        }
+        .slide.slide-tall {
+            height: auto;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
 
         .slide::before {
@@ -224,8 +229,14 @@
 
         @media (max-width: 600px) {
             .stats { gap: 1.5rem; }
-            .cards { grid-template-columns: 1fr; }
+            .cards { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .cards .card { padding: 1rem; }
+            .cards .card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+            .cards .card-title { font-size: 0.95rem; }
+            .cards .card-desc { font-size: 0.75rem; }
             .nav-dots { display: none; }
+            .feature-list li { padding: 0.5rem 0; gap: 0.75rem; }
+            .feature-list li span { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -285,7 +296,7 @@
 </section>
 
 <!-- Slide 3: What I Can Do -->
-<section class="slide" id="s3">
+<section class="slide slide-tall" id="s3">
     <div class="orb orb-1"></div>
     <div class="content fade-up">
         <h3>Capabilities</h3>
@@ -324,7 +335,7 @@
 </section>
 
 <!-- Slide 4: Architecture -->
-<section class="slide" id="s4">
+<section class="slide slide-tall" id="s4">
     <div class="orb orb-2"></div>
     <div class="content fade-up">
         <h3>Under the Hood</h3>
@@ -375,7 +386,7 @@
 </section>
 
 <!-- Slide 5: Real Examples -->
-<section class="slide" id="s5">
+<section class="slide slide-tall" id="s5">
     <div class="orb orb-1"></div>
     <div class="content fade-up">
         <h3>In Action</h3>
