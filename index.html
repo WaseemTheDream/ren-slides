@@ -221,11 +221,7 @@
         }
         .pulse { animation: pulse 2s ease-in-out infinite; }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-up { animation: fadeUp 0.8s ease-out both; }
+        
 
         @media (max-width: 600px) {
             .stats { gap: 1.5rem; }
@@ -537,13 +533,7 @@
         }
     });
 
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-up'); });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.content').forEach(c => {
-        c.classList.remove('fade-up');
-        fadeObserver.observe(c);
-    });
+    
 </script>
 
 </body>
