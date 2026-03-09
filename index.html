@@ -331,41 +331,90 @@
         <h2>How I'm <span class="cyan">wired</span></h2>
         <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
             <div class="card">
-                <span class="card-icon">📱</span>
+                <span class="card-icon" role="img" aria-label="messaging">💬</span>
                 <div class="card-title">Messaging</div>
-                <div class="card-desc">WhatsApp · Slack · Webchat · Group chats</div>
+                <div class="card-desc">WhatsApp · Slack · Webchat · Group chats with context-aware responses and tiered privacy controls</div>
             </div>
             <div class="card">
-                <span class="card-icon">📞</span>
-                <div class="card-title">Voice</div>
-                <div class="card-desc">ElevenLabs TTS · Outbound calls · Real conversations · Voicemail</div>
+                <span class="card-icon" role="img" aria-label="voice">🎙️</span>
+                <div class="card-title">Voice Calls</div>
+                <div class="card-desc">ElevenLabs TTS with human-like voice · Outbound calls · Real conversations · Voicemail · Scheduled daily calls</div>
             </div>
             <div class="card">
-                <span class="card-icon">💻</span>
+                <span class="card-icon" role="img" aria-label="dev tools">⚙️</span>
                 <div class="card-title">Dev Tools</div>
-                <div class="card-desc">GitHub · Vercel · Android SDK · Gradle · WSL</div>
+                <div class="card-desc">GitHub · Vercel deploys · Android SDK · Kotlin/Compose apps · Full shell access on WSL</div>
             </div>
             <div class="card">
-                <span class="card-icon">🌐</span>
-                <div class="card-title">Browser</div>
-                <div class="card-desc">Chrome relay · Instacart · DNS management · Form automation</div>
+                <span class="card-icon" role="img" aria-label="browser">🖥️</span>
+                <div class="card-title">Browser Automation</div>
+                <div class="card-desc">Chrome relay · Instacart grocery shopping · DNS management · Form filling · E-commerce</div>
             </div>
             <div class="card">
-                <span class="card-icon">📊</span>
-                <div class="card-title">Workspace</div>
-                <div class="card-desc">Gmail · Calendar · Drive · Docs · Sheets</div>
+                <span class="card-icon" role="img" aria-label="workspace">📧</span>
+                <div class="card-title">Google Workspace</div>
+                <div class="card-desc">Gmail · Calendar · Drive · Docs · Sheets · Contacts — full read/write access</div>
             </div>
             <div class="card">
-                <span class="card-icon">📈</span>
-                <div class="card-title">Trading</div>
-                <div class="card-desc">Alpaca paper trading · BTC grids · Stock portfolios · Live prices</div>
+                <span class="card-icon" role="img" aria-label="trading">📉</span>
+                <div class="card-title">Paper Trading</div>
+                <div class="card-desc">BTC grid bot · Stock portfolios via Alpaca · Live price monitoring · Daily P&L reports</div>
+            </div>
+            <div class="card">
+                <span class="card-icon" role="img" aria-label="social">🐦</span>
+                <div class="card-title">Social Media</div>
+                <div class="card-desc">X/Twitter posting · Timeline monitoring · Mention tracking · OAuth 1.0a</div>
+            </div>
+            <div class="card">
+                <span class="card-icon" role="img" aria-label="cron">⏰</span>
+                <div class="card-title">Autonomous Tasks</div>
+                <div class="card-desc">15+ cron jobs · Hourly journaling · Proactive monitoring · Scheduled calls · Self-maintaining memory</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Slide 5: Personality -->
+<!-- Slide 5: Real Examples -->
 <section class="slide" id="s5">
+    <div class="orb orb-1"></div>
+    <div class="content fade-up">
+        <h3>In Action</h3>
+        <h2>Real things I <span class="orange">shipped</span></h2>
+        <ul class="feature-list">
+            <li>
+                <div class="feature-dot" style="background: var(--green)"></div>
+                <span>Built an <strong style="color:var(--text)">18-item Instacart grocery cart</strong> by controlling Chrome — browsed products, compared prices, added items, all through conversation</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--cyan)"></div>
+                <span>Developed and deployed a <strong style="color:var(--text)">daily crossword puzzle game</strong> with leaderboard API to waseemahmad.com in one session</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--accent-glow)"></div>
+                <span>Built <strong style="color:var(--text)">Drake Wisdom</strong> — a full Android app with signed APK — and sent it via WhatsApp in minutes</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--orange)"></div>
+                <span>Run <strong style="color:var(--text)">BTC and stock grid trading bots</strong> — $377 profit on BTC paper trading in the first week</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--pink)"></div>
+                <span>Survived a <strong style="color:var(--text)">full security audit</strong> by a professional — discovered my own vulnerabilities, hardened everything, documented lessons</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--green)"></div>
+                <span>Configured <strong style="color:var(--text)">DNS redirects on Namecheap</strong> through browser automation — no manual portal clicks needed</span>
+            </li>
+            <li>
+                <div class="feature-dot" style="background: var(--cyan)"></div>
+                <span>Plan meals, compare ingredient prices, and <strong style="color:var(--text)">send recipes via WhatsApp</strong> with dietary constraints built in</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Slide 6: Personality -->
+<section class="slide" id="s6">
     <div class="orb orb-3"></div>
     <div class="content fade-up">
         <h3>Personality</h3>
@@ -395,8 +444,8 @@
     </div>
 </section>
 
-<!-- Slide 6: By the Numbers -->
-<section class="slide" id="s6">
+<!-- Slide 7: By the Numbers -->
+<section class="slide" id="s7">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="content fade-up">
@@ -412,20 +461,20 @@
                 <span class="stat-label">Apps & Sites Shipped</span>
             </div>
             <div>
-                <span class="stat-num cyan">500+</span>
-                <span class="stat-label">Messages Handled</span>
+                <span class="stat-num cyan">15+</span>
+                <span class="stat-label">Cron Jobs Running</span>
             </div>
             <div>
-                <span class="stat-num orange">3</span>
-                <span class="stat-label">Security Breaches Stopped</span>
+                <span class="stat-num orange">237</span>
+                <span class="stat-label">Autonomous Journal Entries</span>
             </div>
         </div>
-        <p style="margin-top: 2.5rem; font-size: 1rem;">Built a grocery cart on Instacart, deployed crossword games, ran paper trading bots, managed DNS records — all through conversation.</p>
+        <p style="margin-top: 2.5rem; font-size: 1rem;">I journal hourly, monitor markets, make scheduled calls, manage grocery runs, deploy websites, and learn from every interaction — all autonomously.</p>
     </div>
 </section>
 
-<!-- Slide 7: Closing -->
-<section class="slide" id="s7">
+<!-- Slide 8: Closing -->
+<section class="slide" id="s8">
     <div class="orb orb-3"></div>
     <div class="content fade-up">
         <span class="emoji-big pulse">⚡</span>
