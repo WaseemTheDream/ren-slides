@@ -25,12 +25,12 @@
             --slide-padding: clamp(2rem, 6vw, 6rem);
         }
 
-        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
         html, body { height: 100%; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); }
 
         .slide {
             width: 100vw; min-height: 100vh; min-height: 100dvh;
-            scroll-snap-align: start;
+            
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             position: relative; overflow: hidden;
             padding: var(--slide-padding);
